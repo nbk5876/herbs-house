@@ -1,0 +1,352 @@
+<!-- --------------------------------------------------
+     Name: index.html
+     Purpose: Mobile-friendly front door page for Herbs House retail shop
+     Notes: Place splash image at ./image/herbs-house-splash.png
+     -------------------------------------------------- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Herbs House retail shop — Ballard’s original medically endorsed herbs. Est. 2013." />
+  <title>Herbs House</title>
+
+  <style>
+    :root{
+      --bg: #0b0f0c;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #79c143; /* Herbs House green vibe */
+      --accent2: #a7df6c;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --pad: clamp(14px, 2.6vw, 22px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(121,193,67,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,223,108,.10), transparent 60%),
+        linear-gradient(180deg, #070a08 0%, #0b0f0c 55%, #070a08 100%);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px var(--pad) 40px;
+    }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 2px 16px;
+    }
+
+    .brand-mini{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(121,193,67,.15);
+      flex: 0 0 auto;
+    }
+
+    .brand-mini .name{
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      font-size: 14px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .pill strong{ color: var(--text); font-weight: 650; }
+
+    .hero{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .hero-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .splash{
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #ffffff; /* looks good if the PNG has white margins */
+    }
+
+    .hero-copy{
+      padding: 16px 16px 18px;
+    }
+
+    h1{
+      margin: 6px 0 8px;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -.4px;
+    }
+
+    .sub{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .cta-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 650;
+      letter-spacing: .2px;
+      min-height: 44px; /* good tap target */
+      flex: 1 1 160px;
+    }
+
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(121,193,67,.95), rgba(92,165,42,.95));
+      border-color: rgba(121,193,67,.55);
+      color: #061006;
+      box-shadow: 0 14px 30px rgba(121,193,67,.25);
+    }
+
+    .btn:hover{ filter: brightness(1.03); }
+    .btn:active{ transform: translateY(1px); }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card{
+      background: var(--card2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .card h2{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14.5px;
+    }
+
+    .label{
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(121,193,67,.35);
+      background: rgba(121,193,67,.10);
+      color: rgba(219,255,198,.92);
+    }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+      .splash{ aspect-ratio: auto; }
+      .grid{ grid-template-columns: 1fr; }
+      header{ padding-bottom: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand-mini" aria-label="Herbs House">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="name">Herbs House</div>
+      </div>
+
+      <!-- Quick status (edit as needed) -->
+      <div class="pill" role="status" aria-live="polite">
+        <strong>Open today</strong>
+        <span>•</span>
+        <span>See hours below</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Front door">
+        <div class="hero-card">
+          <img
+            class="splash"
+            src="./html/image/herbs-house-splash.png"
+            alt="Herbs House logo"
+            loading="eager"
+          />
+          <div class="hero-copy">
+            <h1>Welcome to Herbs House</h1>
+            <p class="sub">
+              Ballard’s original medically endorsed herbs — thoughtfully sourced products,
+              friendly guidance, and a calm place to shop.
+            </p>
+
+            <div class="cta-row">
+              <!-- Replace # with your real pages/links -->
+              <a class="btn primary" href="./shop.html">Shop Products</a>
+              <a class="btn" href="./menu.html">Browse Categories</a>
+              <a class="btn" href="./contact.html">Contact / Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Store info">
+          <div class="hero-copy">
+            <h2 style="margin:0 0 8px; font-size:18px;">Today at a glance</h2>
+            <p class="sub" style="margin:0 0 12px;">
+              Quick info for in-store shoppers. Update these details anytime.
+            </p>
+
+            <div class="card" style="margin-bottom: 12px;">
+              <h2>Hours</h2>
+              <p>
+                Mon–Fri: 10am–7pm<br />
+                Sat: 11am–6pm<br />
+                Sun: 12pm–5pm
+              </p>
+              <span class="label">Walk-ins welcome</span>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px;">
+              <h2>Location</h2>
+              <p>
+                1234 Market St<br />
+                Seattle, WA 98107
+              </p>
+              <span class="label">Free nearby parking</span>
+            </div>
+
+            <div class="card">
+              <h2>Need help choosing?</h2>
+              <p>
+                New here? Tell us what you’re looking for and we’ll point you to the right shelf.
+              </p>
+            </div>
+
+            <div class="cta-row" style="margin-top: 12px;">
+              <!-- Map link: replace query with your real address -->
+              <a class="btn" href="https://maps.google.com/?q=Herbs%20House%20Seattle" target="_blank" rel="noopener">
+                Open in Maps
+              </a>
+              <a class="btn" href="tel:+12065551234">Call Store</a>
+            </div>
+
+            <p style="margin:12px 0 0; color: rgba(255,255,255,.55); font-size: 12.5px;">
+              Tip: If you add an online menu, link it from “Browse Categories.”
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid" aria-label="Highlights">
+        <div class="card">
+          <h2>Best sellers</h2>
+          <p>Discover what regulars love right now—updated weekly.</p>
+        </div>
+        <div class="card">
+          <h2>New arrivals</h2>
+          <p>Fresh inventory drops—find the newest products in store.</p>
+        </div>
+        <div class="card">
+          <h2>Local pickup</h2>
+          <p>Order online and pick up in store (when enabled).</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Herbs House • Est. 2013</div>
+      <div>
+        <a href="./privacy.html">Privacy</a>
+        <span aria-hidden="true"> • </span>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
