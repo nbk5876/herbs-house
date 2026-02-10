@@ -1,0 +1,388 @@
+<!-- --------------------------------------------------
+     Name: shop.html
+     Purpose: Shop landing page for Herbs House
+     -------------------------------------------------- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shop premium cannabis products at Herbs House Seattle - flower, edibles, vapes, concentrates and more." />
+  <title>Shop Cannabis Products - Herbs House</title>
+
+  <style>
+    :root{
+      --bg: #0b0f0c;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #79c143;
+      --accent2: #a7df6c;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --pad: clamp(14px, 2.6vw, 22px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(121,193,67,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,223,108,.10), transparent 60%),
+        linear-gradient(180deg, #070a08 0%, #0b0f0c 55%, #070a08 100%);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px var(--pad) 40px;
+    }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 2px 16px;
+    }
+
+    .brand-mini{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(121,193,67,.15);
+      flex: 0 0 auto;
+    }
+
+    .brand-mini .name{
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .back-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      font-size: 14px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .back-link:hover{
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-shop{
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    h1{
+      margin: 0 0 16px;
+      font-size: clamp(36px, 6vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -.5px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-primary{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 32px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(121,193,67,.95), rgba(92,165,42,.95));
+      border: 1px solid rgba(121,193,67,.55);
+      color: #061006;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: .2px;
+      box-shadow: 0 18px 40px rgba(121,193,67,.3);
+      transition: all 0.2s ease;
+    }
+
+    .cta-primary:hover{
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(121,193,67,.4);
+    }
+
+    .features{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 50px 0;
+    }
+
+    .feature-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon{
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature-card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+
+    .quick-links{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 40px 0;
+    }
+
+    .quick-link{
+      background: var(--card2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-link:hover{
+      background: rgba(121,193,67,.08);
+      border-color: rgba(121,193,67,.3);
+      transform: translateY(-2px);
+    }
+
+    .quick-link h3{
+      margin: 0 0 6px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-link p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .info-box{
+      background: linear-gradient(135deg, rgba(121,193,67,.12), rgba(167,223,108,.06));
+      border: 1px solid rgba(121,193,67,.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 40px 0;
+    }
+
+    .info-box h2{
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: rgba(219,255,198,.92);
+    }
+
+    .info-box p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .info-box p:last-child{
+      margin-bottom: 0;
+    }
+
+    footer{
+      margin-top: 50px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px){
+      .features{
+        grid-template-columns: 1fr;
+      }
+      .quick-links{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a href="./index.html" class="brand-mini" aria-label="Herbs House">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="name">Herbs House</div>
+      </a>
+      <a href="./index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <main>
+      <div class="hero-shop">
+        <h1>Shop Premium Cannabis</h1>
+        <p class="subtitle">
+          Browse our full online menu with real-time pricing, product details, 
+          and availability. Order ahead for pickup.
+        </p>
+        <a href="https://www.herbshouse.org/online-menu/" class="cta-primary" target="_blank" rel="noopener">
+          🌿 Browse Full Menu
+        </a>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h2>Live Inventory</h2>
+          <p>See what's in stock right now with real-time updates and pricing</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h2>Order Online</h2>
+          <p>Browse from home, order online, and pick up in-store when ready</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h2>Daily Deals</h2>
+          <p>Check out our specials and happy hour pricing on select products</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h2>Expert Picks</h2>
+          <p>See budtender recommendations and customer favorites</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h2>🕐 Happy Hours - Extra Savings!</h2>
+        <p>
+          <strong>8:00 AM – 9:00 AM</strong> and <strong>10:00 PM – 11:00 PM</strong>
+        </p>
+        <p>
+          Special pricing on select products during happy hours. Perfect for early birds and night owls!
+        </p>
+      </div>
+
+      <h2 style="margin: 40px 0 20px; font-size: 26px; text-align: center;">Quick Browse</h2>
+      
+      <div class="quick-links">
+        <a href="./menu.html" class="quick-link">
+          <h3>🌸 Premium Flower</h3>
+          <p>Indicas, sativas, and hybrids from top growers</p>
+        </a>
+
+        <a href="./menu.html" class="quick-link">
+          <h3>🚬 Pre-Rolls</h3>
+          <p>Ready-to-smoke singles and packs</p>
+        </a>
+
+        <a href="./menu.html" class="quick-link">
+          <h3>🍬 Edibles</h3>
+          <p>Gummies, chocolates, and baked goods</p>
+        </a>
+
+        <a href="./menu.html" class="quick-link">
+          <h3>💨 Vapes</h3>
+          <p>Cartridges, pens, and disposables</p>
+        </a>
+
+        <a href="./menu.html" class="quick-link">
+          <h3>💎 Concentrates</h3>
+          <p>Shatter, wax, live resin, and more</p>
+        </a>
+
+        <a href="./menu.html" class="quick-link">
+          <h3>🎁 Specials</h3>
+          <p>Today's deals and limited offers</p>
+        </a>
+      </div>
+
+      <div class="info-box">
+        <h2>Need Help Choosing?</h2>
+        <p>
+          Our knowledgeable budtenders are here to help! Whether you're new to cannabis 
+          or a seasoned user, we'll guide you to the perfect products for your needs.
+        </p>
+        <p>
+          <strong>Call us:</strong> <a href="tel:+12065577388" style="color: var(--accent); text-decoration: underline;">(206) 557-7388</a><br>
+          <strong>Hours:</strong> Open Daily 8am - 11pm
+        </p>
+      </div>
+
+      <div style="text-align: center; margin: 50px 0 30px;">
+        <h2 style="margin: 0 0 20px; font-size: 28px;">Ready to Shop?</h2>
+        <a href="https://www.herbshouse.org/online-menu/" class="cta-primary" target="_blank" rel="noopener">
+          View Full Online Menu →
+        </a>
+        <p style="margin: 20px 0 0; color: var(--muted); font-size: 14px;">
+          Browse complete selection • Real-time pricing • Order for pickup
+        </p>
+      </div>
+
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Herbs House • Est. 2013</div>
+      <div>
+        <a href="./privacy.html">Privacy</a>
+        <span aria-hidden="true"> • </span>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!-- --------------------------------------------------
+     Name: contact.html
+     Purpose: Contact and directions page for Herbs House
+     -------------------------------------------------- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Visit Herbs House in Seattle - Find directions, hours, and contact information for Ballard's original cannabis dispensary." />
+  <title>Contact & Directions - Herbs House</title>
+
+  <style>
+    :root{
+      --bg: #0b0f0c;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #79c143;
+      --accent2: #a7df6c;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --pad: clamp(14px, 2.6vw, 22px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(121,193,67,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,223,108,.10), transparent 60%),
+        linear-gradient(180deg, #070a08 0%, #0b0f0c 55%, #070a08 100%);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px var(--pad) 40px;
+    }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 2px 16px;
+    }
+
+    .brand-mini{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(121,193,67,.15);
+      flex: 0 0 auto;
+    }
+
+    .brand-mini .name{
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .back-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      font-size: 14px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .back-link:hover{
+      background: rgba(255,255,255,.08);
+    }
+
+    .page-header{
+      margin: 20px 0 30px;
+      text-align: center;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.4px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .contact-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .contact-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h2{
+      margin: 0 0 14px;
+      font-size: 20px;
+      letter-spacing: -.2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-card p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .contact-card p:last-child{
+      margin-bottom: 0;
+    }
+
+    .contact-card strong{
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .icon{
+      font-size: 24px;
+    }
+
+    .action-buttons{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0 30px;
+    }
+
+    .btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: .2px;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover{
+      background: rgba(255,255,255,.09);
+      border-color: rgba(121,193,67,.3);
+    }
+
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(121,193,67,.95), rgba(92,165,42,.95));
+      border-color: rgba(121,193,67,.55);
+      color: #061006;
+      box-shadow: 0 14px 30px rgba(121,193,67,.25);
+    }
+
+    .btn.primary:hover{
+      filter: brightness(1.05);
+    }
+
+    .map-container{
+      margin: 30px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .map-container iframe{
+      width: 100%;
+      height: 400px;
+      border: 0;
+      display: block;
+    }
+
+    .highlight-box{
+      background: linear-gradient(135deg, rgba(121,193,67,.15), rgba(167,223,108,.08));
+      border: 1px solid rgba(121,193,67,.25);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 25px 0;
+    }
+
+    .highlight-box h3{
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: rgba(219,255,198,.92);
+    }
+
+    .highlight-box p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer{
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px){
+      .contact-grid{
+        grid-template-columns: 1fr;
+      }
+      .action-buttons{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a href="./index.html" class="brand-mini" aria-label="Herbs House">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="name">Herbs House</div>
+      </a>
+      <a href="./index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <h1>Visit Us</h1>
+        <p class="subtitle">
+          Ballard's original medically endorsed cannabis dispensary since 2013
+        </p>
+      </div>
+
+      <div class="action-buttons">
+        <a href="https://maps.google.com/?q=716+NW+65th+St+Seattle+WA+98117" target="_blank" rel="noopener" class="btn primary">
+          📍 Get Directions
+        </a>
+        <a href="tel:+12065577388" class="btn">
+          📞 Call (206) 557-7388
+        </a>
+        <a href="./menu.html" class="btn">
+          🌿 Browse Menu
+        </a>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h2><span class="icon">🕐</span> Hours</h2>
+          <p><strong>Open Daily</strong><br>8:00 AM – 11:00 PM</p>
+          <p style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line);">
+            <strong>Happy Hours</strong><br>
+            8:00 AM – 9:00 AM<br>
+            10:00 PM – 11:00 PM
+          </p>
+          <p style="margin-top: 10px; font-size: 13px;">
+            Special pricing during happy hours!
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h2><span class="icon">📍</span> Location</h2>
+          <p>
+            <strong>716 NW 65th Street</strong><br>
+            Seattle, WA 98117
+          </p>
+          <p style="margin-top: 14px;">
+            Located in the heart of Ballard with free nearby street parking
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h2><span class="icon">💬</span> Contact</h2>
+          <p>
+            <strong>Phone:</strong><br>
+            <a href="tel:+12065577388" style="color: var(--accent); text-decoration: underline;">
+              (206) 557-7388
+            </a>
+          </p>
+          <p style="margin-top: 14px;">
+            <strong>Website:</strong><br>
+            <a href="https://www.herbshouse.org" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">
+              www.herbshouse.org
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>💳 ATM Available In Store</h3>
+        <p>
+          Cash and debit cards accepted. Convenient ATM available inside for your shopping needs.
+        </p>
+      </div>
+
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.1687945247944!2d-122.38615492336395!3d47.67570097119116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015d1e8c0e1e1%3A0x3f6c5e9e8e8e8e8e!2s716%20NW%2065th%20St%2C%20Seattle%2C%20WA%2098117!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Herbs House Location Map"
+        ></iframe>
+      </div>
+
+      <div class="contact-grid" style="margin-top: 30px;">
+        <div class="contact-card">
+          <h2>🅿️ Parking</h2>
+          <p>
+            Free street parking available on NW 65th Street and surrounding streets. 
+            Easy access from Ballard Ave and 15th Ave NW.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h2>🚌 Public Transit</h2>
+          <p>
+            Accessible via King County Metro bus routes. The 40 and D Line stop nearby 
+            on 15th Ave NW.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h2>♿ Accessibility</h2>
+          <p>
+            Our store is wheelchair accessible with wide aisles and ADA-compliant facilities.
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box" style="margin-top: 30px;">
+        <h3>First Time Visiting?</h3>
+        <p>
+          Welcome! Our friendly budtenders are here to help. Bring a valid ID showing you're 21+ 
+          and we'll guide you through our selection. Not sure what you want? Just tell us what 
+          you're looking for and we'll point you in the right direction.
+        </p>
+      </div>
+
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Herbs House • Est. 2013</div>
+      <div>
+        <a href="./privacy.html">Privacy</a>
+        <span aria-hidden="true"> • </span>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

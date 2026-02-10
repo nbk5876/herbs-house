@@ -7,6 +7,10 @@ app = Flask(__name__, static_folder="html", static_url_path="/html")
 def index():
     return send_from_directory(".", "index.html")
 
+@app.route("/<path:filename>.html")
+def pages(filename):
+    return send_from_directory(".", f"{filename}.html")
+
 @app.route("/video/<path:filename>")
 def video(filename):
     return send_from_directory("video", filename)

@@ -1,0 +1,395 @@
+<!-- --------------------------------------------------
+     Name: menu.html
+     Purpose: Product categories page for Herbs House
+     -------------------------------------------------- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse cannabis categories at Herbs House - Premium flower, pre-rolls, edibles, vapes, and concentrates." />
+  <title>Browse Categories - Herbs House</title>
+
+  <style>
+    :root{
+      --bg: #0b0f0c;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #79c143;
+      --accent2: #a7df6c;
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --pad: clamp(14px, 2.6vw, 22px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(121,193,67,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,223,108,.10), transparent 60%),
+        linear-gradient(180deg, #070a08 0%, #0b0f0c 55%, #070a08 100%);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px var(--pad) 40px;
+    }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 2px 16px;
+    }
+
+    .brand-mini{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(121,193,67,.15);
+      flex: 0 0 auto;
+    }
+
+    .brand-mini .name{
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .back-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      font-size: 14px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .back-link:hover{
+      background: rgba(255,255,255,.08);
+    }
+
+    .page-header{
+      margin: 20px 0 24px;
+      text-align: center;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.4px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .cta-banner{
+      background: linear-gradient(135deg, rgba(121,193,67,.15), rgba(167,223,108,.08));
+      border: 1px solid rgba(121,193,67,.25);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0 30px;
+      text-align: center;
+    }
+
+    .cta-banner h2{
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: rgba(219,255,198,.92);
+    }
+
+    .cta-banner p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta-banner .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(121,193,67,.95), rgba(92,165,42,.95));
+      border: 1px solid rgba(121,193,67,.55);
+      color: #061006;
+      font-weight: 650;
+      letter-spacing: .2px;
+      box-shadow: 0 14px 30px rgba(121,193,67,.25);
+    }
+
+    .cta-banner .btn:hover{
+      filter: brightness(1.05);
+    }
+
+    .categories{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .category-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover{
+      background: var(--card2);
+      border-color: rgba(121,193,67,.3);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.5);
+    }
+
+    .category-icon{
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(121,193,67,.2), rgba(167,223,108,.15));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .category-card h2{
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -.2px;
+      color: var(--text);
+    }
+
+    .category-card p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14.5px;
+    }
+
+    .category-tag{
+      display: inline-block;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(121,193,67,.35);
+      background: rgba(121,193,67,.10);
+      color: rgba(219,255,198,.92);
+    }
+
+    .info-section{
+      margin: 40px 0;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .info-section h2{
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .info-section p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .info-section ul{
+      margin: 12px 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    footer{
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px){
+      .categories{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a href="./index.html" class="brand-mini" aria-label="Herbs House">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="name">Herbs House</div>
+      </a>
+      <a href="./index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <h1>Browse Categories</h1>
+        <p class="subtitle">
+          Explore our curated selection of premium cannabis products
+        </p>
+      </div>
+
+      <div class="cta-banner">
+        <h2>🌿 Shop Our Full Menu Online</h2>
+        <p>Browse our complete, up-to-date inventory with live pricing and availability</p>
+        <a href="https://www.herbshouse.org/online-menu/" class="btn" target="_blank" rel="noopener">
+          View Full Online Menu →
+        </a>
+      </div>
+
+      <section class="categories">
+        <div class="category-card">
+          <div class="category-icon">🌸</div>
+          <h2>Premium Flower</h2>
+          <p>
+            Hand-selected cannabis flower featuring indicas, sativas, and hybrids. 
+            Each strain is carefully curated for quality, flavor, and effect.
+          </p>
+          <span class="category-tag">Top strains available</span>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🚬</div>
+          <h2>Pre-Rolls</h2>
+          <p>
+            Convenient, ready-to-smoke pre-rolls crafted from premium flower. 
+            Available in singles and packs, including infused options.
+          </p>
+          <span class="category-tag">Grab & go</span>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🍬</div>
+          <h2>Edibles</h2>
+          <p>
+            Delicious cannabis-infused treats including gummies, chocolates, and baked goods. 
+            Precisely dosed for a consistent experience.
+          </p>
+          <span class="category-tag">Sweet & savory</span>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">💨</div>
+          <h2>Vapes & Cartridges</h2>
+          <p>
+            Modern, discreet vaping options with premium cannabis oil. 
+            Vape pens, cartridges, and disposables from trusted brands.
+          </p>
+          <span class="category-tag">Quick effects</span>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">💎</div>
+          <h2>Concentrates</h2>
+          <p>
+            Potent cannabis extracts for experienced users. Shatter, wax, 
+            live resin, and rosin with maximum cannabinoid content.
+          </p>
+          <span class="category-tag">High potency</span>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🧴</div>
+          <h2>Topicals & Tinctures</h2>
+          <p>
+            Cannabis-infused lotions, balms, and sublingual tinctures. 
+            Perfect for targeted relief and wellness applications.
+          </p>
+          <span class="category-tag">Wellness focused</span>
+        </div>
+      </section>
+
+      <div class="info-section">
+        <h2>Why Shop at Herbs House?</h2>
+        <p>
+          <strong>Ballard's Original Medically Endorsed Cannabis Dispensary</strong> since 2013. 
+          We've been serving the Seattle community with quality products and expert guidance.
+        </p>
+        <ul>
+          <li><strong>Knowledgeable Budtenders</strong> – Get personalized recommendations from our experienced team</li>
+          <li><strong>Premium Selection</strong> – Top brands and locally sourced products</li>
+          <li><strong>Daily Deals</strong> – Happy Hours 8-9am and 10-11pm with special pricing</li>
+          <li><strong>Convenient Location</strong> – Easy parking near Ballard neighborhood</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <h2>Store Information</h2>
+        <p>
+          <strong>Hours:</strong> Open Daily 8am - 11pm<br>
+          <strong>Phone:</strong> 206.557.7388<br>
+          <strong>Location:</strong> 716 NW 65th St, Seattle, WA 98117<br>
+          <strong>ATM:</strong> Available in store
+        </p>
+        <p style="margin-top: 14px;">
+          <a href="./contact.html" style="color: var(--accent); text-decoration: underline;">
+            Get directions and contact info →
+          </a>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Herbs House • Est. 2013</div>
+      <div>
+        <a href="./privacy.html">Privacy</a>
+        <span aria-hidden="true"> • </span>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
