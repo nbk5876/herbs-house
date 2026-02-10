@@ -7,6 +7,10 @@ app = Flask(__name__, static_folder="html", static_url_path="/html")
 def index():
     return send_from_directory(".", "index.html")
 
+@app.route("/video/<path:filename>")
+def video(filename):
+    return send_from_directory("video", filename)
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
